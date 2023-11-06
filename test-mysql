@@ -1,0 +1,33 @@
+-- Create the 'Authors' table
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY,
+    AuthorName VARCHAR(50) NOT NULL
+);
+
+-- Create the 'Books' table
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(100) NOT NULL,
+    AuthorID INT,
+    PublishedYear INT,
+    ISBN VARCHAR(13),
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+
+-- Create the 'Borrowers' table
+CREATE TABLE Borrowers (
+    BorrowerID INT PRIMARY KEY,
+    BorrowerName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100)
+);
+
+-- Create the 'Transactions' table to track book loans
+CREATE TABLE Transactions (
+    TransactionID INT PRIMARY KEY,
+    BookID INT,
+    BorrowerID INT,
+    BorrowDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (BorrowerID) REFERENCES Borrowers(BorrowerID)
+);
