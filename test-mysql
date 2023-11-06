@@ -31,3 +31,5 @@ CREATE TABLE Transactions (
     FOREIGN KEY (BookID) REFERENCES Books(BookID),
     FOREIGN KEY (BorrowerID) REFERENCES Borrowers(BorrowerID)
 );
+
+DESCRIBE Transactions;
